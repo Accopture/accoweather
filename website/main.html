@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@432&family=Valley+Sans:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Accoweather</title>
+        <meta name="description" content="weather app">
+    </head>
+    <body>
+    <script src="/static/main.js" type="module" defer></script>
+
+    <header class="site-header">
+        <img src="/static/content/mainlogo.svg" alt="logo" id="main-logo">
+        <h1>Accoweather</h1>
+        <p>- some profound text goes here</p>
+    </header>
+
+        <form id="weather-input-form">
+            <label for="city-input">Input your city's name</label>
+            <div class="input-div">
+                <input id="city-input" name="city" placeholder="City name" required>
+                <button type="submit">Submit</button>
+                <div class="ac-dropdown">
+                <ul id="cityi-ul"></ul>
+                </div>
+            </div>
+        </form>
+        
+        <div id="weather-display" class="weather-details">
+            <div class="weather-item status-item">
+                <p id="weather-status"></p>
+            </div>
+
+            <div class="weather-item feels-like-item">
+                <p id="feels-like"></p>
+            </div>
+
+            <div class="weather-item temperature-item">
+                <p id="temperature"></p>
+            </div>
+
+            <div class="weather-item humidity-item">
+                <p id="humidity"></p>
+            </div>
+
+            <div class="weather-item wind-speed-item">
+                <p id="wind-speed"></p>
+            </div>
+        </div>
+        <div id="error-display" class="error-toast"></div>
+    </body>
+</html>
+
+
