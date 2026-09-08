@@ -1,0 +1,306 @@
+/* ==========================================================================
+Base & Global Styles
+========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #14171a;
+    color: #f1f5f9;
+    font-family: "Valley Sans", system-ui;
+    scrollbar-width: thin;
+    scrollbar-color: #4a4d52 #18191c;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+Site Header
+========================================================================== */
+
+.site-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: 1rem;
+    min-height: 5rem;
+    padding: 1rem 2rem;
+    background-color: #1e2228;
+    color: #ffffff;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.site-header img {
+    grid-column: 1;
+    grid-row: 1;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.site-header h1 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 1.8rem;
+    line-height: 1.1;
+}
+
+.site-header p {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 2rem 0 0 0;
+    padding: 0;
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+/* ==========================================================================
+Form & Input Controls
+========================================================================== */
+
+#weather-input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 720px;
+    margin: 3rem auto 0;
+}
+
+#weather-input-form label {
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #23282d;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.input-div {
+    position: relative;
+    display: flex;
+    width: 100%;
+    gap: 0.75rem;
+}
+
+#weather-input-form input {
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 1.25rem;
+    border: 2px solid #2f3542;
+    border-radius: 12px;
+    outline: none;
+    background-color: #242830;
+    color: #ffffff;
+    font-size: 1.25rem;
+    transition: transform 0.2s ease, border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#weather-input-form input:focus {
+    transform: translateY(-2px);
+    border-color: #625fff;
+    box-shadow: 0 0 12px rgba(98, 95, 255, 0.3);
+}
+
+#weather-input-form button {
+    height: 3.5rem;
+    padding: 0 2rem;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    background-color: #625fff;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#weather-input-form button:hover {
+    transform: translateY(-2px);
+    background-color: #5350d8;
+}
+
+#weather-input-form button:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+Autocomplete Dropdown
+========================================================================== */
+
+.ac-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+#cityi-ul {
+    width: 100%;
+    max-height: 12rem;
+    margin: 0;
+    padding: 8px;
+    overflow-y: auto;
+    list-style: none;
+    border: 2px solid #2f3542;
+    border-radius: 12px;
+    background-color: #242830;
+    font-size: 1.1rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+#cityi-ul:not(:empty) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.ac-dropdown li {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ac-dropdown li:hover {
+    background-color: #2f3542;
+    color: #7977fc;
+}
+
+/* ==========================================================================
+Weather Card & Grid Layout
+========================================================================== */
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    width: 90%;
+    max-width: 720px;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    border: 2px solid #2f3542;
+    border-radius: 24px;
+    background-color: #242830;
+}
+
+.weather-details:has(p:empty) {
+    display: none;
+}
+
+.weather-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    border: 2px solid #2f3542;
+    border-radius: 16px;
+    background-color: #1e2228;
+    box-shadow: 2px 2px 8px #16191e;
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease,
+        border 0.3s ease;
+}
+
+.weather-item p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    word-break: break-word;
+}
+
+.weather-item:hover {
+    transform: translateY(-2px);
+    border-color: #625fff;
+    box-shadow: 0 4px 12px rgba(98, 95, 255, 0.3);
+}
+
+.status-item {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 480px) {
+    .weather-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+Error Toast
+========================================================================== */
+
+.error-toast {
+    position: fixed;
+    bottom: clamp(1rem, 3vh, 2.5rem);
+    left: clamp(1rem, 3vw, 2.5rem);
+    z-index: 1000;
+}
+
+.error-toast p {
+    width: min(90vw, max-content);
+    margin: 0;
+    padding: clamp(0.75rem, 2vh, 1.25rem) clamp(1rem, 2vw, 1.5rem);
+    border: 2px solid #2f3542;
+    border-radius: 12px;
+    background-color: #242830;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1.125rem);
+    animation: toastIn 0.8s cubic-bezier(1, 0, 0, 1.01) forwards,
+        toastOut 0.8s cubic-bezier(1, 0, 0, 1.01) forwards 2.3s;
+}
+
+.error-toast:empty {
+    display: none;
+}
+@media (max-width: 480px) {
+    .error-toast p {
+        width: min(90vw, 420px);
+    }
+}
+
+/* ==========================================================================
+Animations
+========================================================================== */
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translate3d(-120%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes toastOut {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(-120%, 0, 0);
+    }
+}
